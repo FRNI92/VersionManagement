@@ -6,3 +6,5 @@ Console.Write("Förnamn:");
 
 Console.Write("Efternamn: ");
     string lastName = Console.ReadLine()!;
+
+Console.ReadKey();
