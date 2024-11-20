@@ -1,10 +1,9 @@
-﻿Console.WriteLine("Hejsan och välkommern");
-Console.WriteLine("Var vänligen och fyll i informationen här nedan.");
+﻿
 
-Console.Write("Förnamn:");
-    string firstName = Console.ReadLine()!;
+List<string> names = ["Fredrik", "Gustav", "Greger"];
 
-Console.Write("Efternamn: ");
-    string lastName = Console.ReadLine()!;
-
-Console.ReadKey();
+for (int i = 0; i < names.Count; i++)
+{
+    string name = names[i];
+    Console.WriteLine(name);
+}
