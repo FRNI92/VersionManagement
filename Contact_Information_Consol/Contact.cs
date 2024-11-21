@@ -13,6 +13,8 @@ using System.Text.RegularExpressions;
    provade att BUILD-Clean-Rebuld men det gick inte.
    tog bort all kod i Contact och la till endast det ny som ska jobba med menyn. nu kunde jag köra Program och den verkar fungera rätt. 
    det satt en "{" på ett ställe som störde hela projektet samt att jag tror att den gamla koden exekverades pågrund av att den låg utanför min Contact klass*/
+
+
 /*  Fråga om kontaktuppgifter
 Namn?check
 kontrollera namncheck
