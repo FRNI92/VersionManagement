@@ -3,9 +3,9 @@
 Console.WriteLine("Det är apocalypse imorgon. du måste ha mat.Gör en lista på vad som ska införskaffas");
 
 List<string> foodList = [];
-string input;
-Regex onlyFood = new Regex(@"^[a-zA-ZåäöÅÄÖ\s]+$");
-//@ gör att man slipper dubbel"\\" 
+string input; 
+Regex onlyFood = new Regex(@"^[a-zA-ZåäöÅÄÖ\s]+$"); 
+
 
 do
 {

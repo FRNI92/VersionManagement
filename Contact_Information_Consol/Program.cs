@@ -1,70 +1,52 @@
-﻿/*  Fråga om kontaktuppgifter
-    Namn?check
-    kontrollera namncheck
-    ålder?
-    spara ålder
-    skriv ut ålder
-*/
-using System.Text.RegularExpressions;
-List<string> userInputList = []; //använder samma lista för namn och ålder. kommer behöva konvertera age ToString()
-string userNameInput;
-Regex nameCheck = new Regex(@"^[a-zA-Z]+$");
+﻿using System; //gör att man kan använda consoleWrite/read och datatyper
+using System.Collections.Generic; //gör att vi kan använda List
 
-int userAgeInput;
-
-do 
-    {
-    Console.Write("Vi behöver få in dina kontaktuppgifte\n skriv in ditt namn eller skriv 'Avsluta' för att stänga fönstret:");
-     userNameInput = Console.ReadLine();
-
-        if (userNameInput.ToLower() == "avsluta")
-        {
-            break;//skriver man avsluta så breakar den och skriver ut listan
-        }
-    
-        if (nameCheck.IsMatch(userNameInput))//kollar om namnet innehåller bokstäver
-        {
-            userInputList.Add(userNameInput);//lägger till input i listan
-            Console.WriteLine($"Vi har lagt till: {userNameInput}"); //säger till användaren att namnet lagts till och breakar
-            break;
-        }
-        else
-        {
-            Console.WriteLine("You need to enter a valid name. no numbers "); //skriv in korrekt namn som är godkänd av regex
-        }
-    } while (true);
-//när denna loop är avslutat påbörjas nästa do-while
-do
+class ProgramMenu // den här klassen ska innehålle Main
 {
-    Console.Write("Hur många år är du? skriv avsluta för att se listan");
-    string input = Console.ReadLine();
-
-    if (input.ToLower() == "avsluta")
+    static void Main(string[] args)
     {
-        break;
-    }
-    
+        List<string> userInputList = [];//skapar en List string som är tom
+        bool isRunning = true;//skapar en boolvariabel som jag sätter till true. så att koden körs.
 
-    if (int.TryParse(input, out userAgeInput)) //kollar om det är en giltig siffra. är det ok så hamnar value hos out-variabeln
-    {
-        userInputList.Add(input.ToString());// den läggs till i listan men som en string och breakar
-        Console.WriteLine($"du är {userAgeInput} år gammal. Ålder har lagts till i listan");
-        break;
-    }
-    else
-    {
-        Console.WriteLine("Du måste ange ett giltigt heltal för ålder. försök igen.");
-    }
-} while (true);
+        while (isRunning)// isRunning får "stämpeln" av true eller false. true i detta fall
+        {
+            Console.WriteLine("Välj ett alternativ:");
+            Console.WriteLine("1. Lägg till Namn");
+            //Console.WriteLine("2. Lägg till ålder");
+            //Console.WriteLine("3. Lägg till telefonnummer");
+            //Console.WriteLine("4 Lägg till adress");
+            //Console.WriteLine("5. Avsluta");
 
-Console.WriteLine("\nKontaktuppgifter");// när allt har breakat aningen av korrekt inmatning eller "avslut" så hämtar foreach ut allt ur listan
+            string menuChoice = Console.ReadLine();//sparar användarens text
+            Console.Clear();
+            switch (menuChoice) //städar upp konsollen lite
+            {
+                case "1"://jämför det jag sparat från användaren
+                    Console.WriteLine("skriv Namn:");
+                    string input = Console.ReadLine();
+                    Contact.AddNameToList(input, userInputList);//öppnar en portal och "speglar" innehållet här med contact
+                    break;
 
-foreach (string userInputName in userInputList)
-{
-    Console.WriteLine($"- {userInputName}");
+                //    case "2":
+                //    Console.WriteLine("Inmatningar:");
+                //    foreach (string information in userInputList) 
+                //    { 
+                //        Console.WriteLine(information); 
+                //    }
+                //    break;
+
+                //case "5":
+                //    Console.WriteLine("Avslutar...");
+                //    isRunning = false;
+                //    break;
+
+                default:
+                    Console.WriteLine("Ogiltigt val, försök igen.");
+                    break;
+
+            }
+        }
+    }
 }
 
-Console.ReadKey();
-
-
-
+                    
