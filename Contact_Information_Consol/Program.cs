@@ -21,6 +21,7 @@ class ProgramMenu // den här klassen ska innehålle Main
             //Console.WriteLine("4 Lägg till adress");
             Console.WriteLine("5. Skriv ut listan");
             Console.WriteLine("6. Sten Sax Påse");
+            Console.WriteLine("7 Calculator");
 
             string menuChoice = Console.ReadLine();//sparar användarens text
             Console.Clear();
@@ -55,6 +56,19 @@ class ProgramMenu // den här klassen ska innehålle Main
                     if (answer.ToLower() == "ja")
                     {
                         Rock_Paper_Scissors.Play();//anropar filen med spelet
+                    }
+                    else
+                    {
+                        Console.WriteLine("Går tillbaka till menyn...");
+                    }
+                    break;
+
+                case "7":
+                    Console.WriteLine("Du vill ha hjälp att räkna ut saker?. skriv ja för att går vidare. anykey för att back");
+                    string calcAnswer = Console.ReadLine();
+                    if (calcAnswer.ToLower() == "ja")
+                    {
+                        Calculator.CalcBank();
                     }
                     else
                     {
