@@ -50,7 +50,7 @@ class ProgramMenu // den här klassen ska innehålle Main
                     break;
                 
                 case "6":
-                    Console.WriteLine("vill du spela Sten sax påse?");
+                    Console.WriteLine("vill du spela Sten sax påse? skriv ja ");
                     string answer = Console.ReadLine();
                     if (answer.ToLower() == "ja")
                     {
