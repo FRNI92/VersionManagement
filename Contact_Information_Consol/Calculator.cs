@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.Design;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -16,13 +17,13 @@ namespace Contact_Information_Consol
             Console.WriteLine("Vad vill du öppna för konto?");
             Console.WriteLine("1. Fasträntekonto");
             Console.WriteLine("2. Sparkonto");
-            string accountChoice = Console.ReadLine();
-            accountChoice.ToLower();
+            string accountChoice = Console.ReadLine()?.ToLower(); // tog bort en extra rad med accountchoice.toLower ?tecken håller koll att det inte är null
+  
 
             switch (accountChoice)
             {
                 case "1":
-                    OpenAccount("fasträntekonto");
+                    OpenAccount("Fasträntekonto");
                     break;
 
                 case "2":
@@ -37,28 +38,31 @@ namespace Contact_Information_Consol
             }
         }
         
-public static void OpenAccount(string account)
+public static void OpenAccount(string account) //account får värdet fasträntekonto
 
     {
-            List<decimal> bankAccount = [];
+            if (account == "Fasträntekonto")
+            {
 
-            Console.WriteLine("du valde att öppna ett fasträntekonto");
+            List<decimal> bankAccount = []; //den klagade på att det var int så jag ändrade till decimal
+
+        Console.WriteLine("du valde att öppna ett fasträntekonto");
         Console.WriteLine("hur mycket vill du sätta in?");
-        string moneyInFixedDeposit = Console.ReadLine();
-        if (decimal.TryParse(moneyInFixedDeposit, out decimal depositAmount))
+        string moneyInFixedDeposit = Console.ReadLine(); //sparar input som string och provar att göra om den. om det går får den variabeln decimal depositAmount
+        if (decimal.TryParse(moneyInFixedDeposit, out decimal depositAmount)) 
         {
-            bankAccount.Add(depositAmount);
+            bankAccount.Add(depositAmount); //den har var tänkt att spara alla olika konto-inputs
             Console.WriteLine("hur länge vill du spar? (i dagar)");
-            string moneySaveTimeInput = Console.ReadLine();
+            string moneySaveTimeInput = Console.ReadLine(); //testar om inputen går att konvertera
                 if (decimal.TryParse(moneySaveTimeInput, out decimal moneySaveTime))
                 {
                     Console.WriteLine($"du har valt att spara {moneyInFixedDeposit} kr i  {moneySaveTime} dagar");
                     Console.WriteLine("låt mig räkna ut detta åt dig");
-                    foreach (int bank in bankAccount)
+                    foreach (int bank in bankAccount)// är skriver vi ut alla items från bankAccout i en temporär int
                     {
 
 
-                        decimal interest = 0.038m;
+                        decimal interest = 0.038m;//m för att markera att det är av typen decimal
                         decimal earnedInterest = ((bank * (moneySaveTime / 365)) * interest);
                         decimal result = (bank + earnedInterest);
                         decimal uncleSam = (earnedInterest * 0.33m);
@@ -77,6 +81,48 @@ public static void OpenAccount(string account)
             else
             {
                 Console.WriteLine("Ogiltigt belopp, ange ett giltigt belopp");
+            }
+        
+            }else if (account == "Sparkonto")
+            {
+                List<decimal> bankAccount = []; //den klagade på att det var int så jag ändrade till decimal
+
+                Console.WriteLine("du valde att öppna ett sparkonto");
+                Console.WriteLine("hur mycket vill du sätta in?");
+                string moneyInFixedDeposit = Console.ReadLine();
+                if (decimal.TryParse(moneyInFixedDeposit, out decimal depositAmount))
+                {
+                    bankAccount.Add(depositAmount);
+                    Console.WriteLine("hur länge vill du spar? (i dagar)");
+                    string moneySaveTimeInput = Console.ReadLine();
+                    if (decimal.TryParse(moneySaveTimeInput, out decimal moneySaveTime))
+                    {
+                        Console.WriteLine($"du har valt att spara {moneyInFixedDeposit} kr i  {moneySaveTime} dagar");
+                        Console.WriteLine("låt mig räkna ut detta åt dig");
+                        foreach (int bank in bankAccount)
+                        {
+
+
+                            decimal interest = 0.02m;
+                            decimal earnedInterest = ((bank * (moneySaveTime / 365)) * interest);
+                            decimal result = (bank + earnedInterest);
+                            decimal uncleSam = (earnedInterest * 0.33m);
+                            Console.WriteLine($"om du tar ditt konto med: {bank} och sätter på ett sparkonto \n" +
+                                               $"med en ränta på {interest * 100}% i {moneySaveTime} dagar, kommer du tjäna {earnedInterest} kr\n" +
+                                               $"vilket genererar en summa på {result}\n" +
+                                               $"Sedan måstedu skatta 33% på {earnedInterest}. Du kommer alltså slutändan tjäna {earnedInterest - uncleSam}");
+                            Console.ReadKey();
+                        }
+                    }
+                    else
+                    {
+                        Console.WriteLine("Ogiltig sparperiod, ange heltal. du kan inte ha pengarna här en del av en dag");
+                    }
+                }
+                else
+                {
+                    Console.WriteLine("Ogiltigt belopp, ange ett giltigt belopp");
+                }
             }
             //public static int GetUserInput()kanske behöver den här när jaghar flera konton
             //{
