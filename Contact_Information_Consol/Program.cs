@@ -3,12 +3,13 @@ using System; //gör att man kan använda consoleWrite/read och datatyper
 using System.Collections.Generic; //gör att vi kan använda List
 
 /*lägger till val 2 i menyn. lägger till case 2 
- lägg till slah n och slah t*/
+ lägg till slash n och slash t*/
 
 class ProgramMenu // den här klassen ska innehålle Main
 {
     static void Main(string[] args)
     {
+        Calculator.CalcBank();// den ligger här för att jag ska slippa gå igenom alla val
         List<string> userInputList = [];//skapar en List string som är tom
         bool isRunning = true;//skapar en boolvariabel som jag sätter till true. så att koden körs.
 
@@ -21,7 +22,7 @@ class ProgramMenu // den här klassen ska innehålle Main
             //Console.WriteLine("4 Lägg till adress");
             Console.WriteLine("5. Skriv ut listan");
             Console.WriteLine("6. Sten Sax Påse");
-            Console.WriteLine("7 Calculator");
+            Console.WriteLine("7. Fixed deposit Account-Calculator");
 
             string menuChoice = Console.ReadLine();//sparar användarens text
             Console.Clear();
