@@ -12,31 +12,40 @@ namespace Contact_Information_Consol
     {
         public static void CalcBank()
         {
+            bool running = true;
+            while (running) 
+            { 
 
-
-            Console.WriteLine("Vad vill du öppna för konto?");
-            Console.WriteLine("1. Fasträntekonto");
-            Console.WriteLine("2. Sparkonto");
-            string accountChoice = Console.ReadLine()?.ToLower(); // tog bort en extra rad med accountchoice.toLower ?tecken håller koll att det inte är null
+                Console.WriteLine("Vad vill du öppna för konto?");
+                Console.WriteLine("1. Fasträntekonto");
+                Console.WriteLine("2. Sparkonto");
+                string accountChoice = Console.ReadLine()?.ToLower(); // tog bort en extra rad med accountchoice.toLower ?tecken håller koll att det inte är null
   
 
-            switch (accountChoice)
-            {
-                case "1":
-                    OpenAccount("Fasträntekonto");
-                    break;
+                switch (accountChoice)
+                {
+                    case "1":
+                        OpenAccount("Fasträntekonto");
+                        break;
 
-                case "2":
-                    OpenAccount("Sparkonto");
-                    break;
-                default:
-                    Console.WriteLine("välj ett konto");
-                    break;
+                    case "2":
+                        OpenAccount("Sparkonto");
+                        break;
+                    default:
+                        Console.WriteLine("välj ett konto");
+                        break;
+
+                    case "3":
+                        Console.WriteLine("Jag vill tillbaka till menyn");
+                        break;
 
 
 
+
+                }
             }
         }
+
         
 public static void OpenAccount(string account) //account får värdet fasträntekonto
 
@@ -71,7 +80,7 @@ public static void OpenAccount(string account) //account får värdet fastränte
                                            $"vilket genererar en summa på {result}\n" +
                                            $"Sedan måstedu skatta 33% på {earnedInterest}. Du kommer alltså slutändan tjäna {earnedInterest - uncleSam}");
                         Console.ReadKey();
-                    }
+                        }
                 }
                 else
                 {
