@@ -1,4 +1,5 @@
 ﻿using System;
+using System.ComponentModel.Design;
 using System.Linq;
 namespace Contact_Information_Consol
 {
@@ -11,12 +12,16 @@ namespace Contact_Information_Consol
             Console.Write("Hur många siffror vill du mata in? ");
             if (!int.TryParse(Console.ReadLine(), out int antal) || antal <= 0)//hanterar utfallet direkt så man slipper flera if else. om det inte går hoppas man till brackets
             {
-                Console.WriteLine("Ogiltig inmatning. Försök igen med ett positivt heltal.");
+                Console.WriteLine("Ogiltig inmatning. Försök igen med ett positivt heltal.");//
                 return;
             }
 
+
+
+
+
             // Array för att lagra användarens siffror
-            double[] yourNumbers = new double[antal];
+            double[] yourNumbers = new double[antal];// kan vara smidigare med en List
 
             // Tar emot inmatning från användaren
             for (int i = 0; i < antal; i++)
@@ -37,17 +42,17 @@ namespace Contact_Information_Consol
             Console.ReadKey();
         }
 
-        static void Minimum(double[] yourNumbers)
+        public static void Minimum(double[] yourNumbers)
         {
-            Console.WriteLine("Minimum är " + yourNumbers.Min());
+            Console.WriteLine("Minimum är " + yourNumbers.Min()); //enablas av linq, inbyggda functioner
         }
 
-        static void Average(double[] yourNumbers)
+        public static void Average(double[] yourNumbers)
         {
-            Console.WriteLine("Medelvärdet är " + yourNumbers.Average());
+            Console.WriteLine("Medelvärdet är " + yourNumbers.Average()); // jag gör alla public så att jag kan anropa dem från andra delar. kanske från bankdelen
         }
 
-        static void Maximum(double[] yourNumbers)
+        public static void Maximum(double[] yourNumbers)
         {
             Console.WriteLine("Maximum är " + yourNumbers.Max());
         }
