@@ -19,6 +19,7 @@ namespace Contact_Information_Consol
                 Console.WriteLine("Vad vill du öppna för konto?");
                 Console.WriteLine("1. Fasträntekonto");
                 Console.WriteLine("2. Sparkonto");
+                Console.WriteLine("3. Jag vill tillbaka till menyn");
                 string accountChoice = Console.ReadLine()?.ToLower(); // tog bort en extra rad med accountchoice.toLower ?tecken håller koll att det inte är null
   
 
@@ -31,13 +32,21 @@ namespace Contact_Information_Consol
                     case "2":
                         OpenAccount("Sparkonto");
                         break;
+
+
+                    case "3":
+                        running = false;
+                        break;
+
+                        
                     default:
                         Console.WriteLine("välj ett konto");
                         break;
+                        
 
-                    case "3":
-                        Console.WriteLine("Jag vill tillbaka till menyn");
-                        break;
+
+
+
 
 
 

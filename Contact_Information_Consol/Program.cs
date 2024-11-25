@@ -1,6 +1,7 @@
 ﻿using Contact_Information_Consol;
 using System; //gör att man kan använda consoleWrite/read och datatyper
-using System.Collections.Generic; //gör att vi kan använda List
+using System.Collections.Generic;
+using System.Security.Cryptography.X509Certificates; //gör att vi kan använda List
 
 /*lägger till val 2 i menyn. lägger till case 2 
  lägg till slash n och slash t*/
@@ -9,7 +10,7 @@ class ProgramMenu // den här klassen ska innehålle Main
 {
     static void Main(string[] args)
     {
-        Calculator.CalcBank();// den ligger här för att jag ska slippa gå igenom alla val
+        // den ligger här för att jag ska slippa gå igenom alla val
         List<string> userInputList = [];//skapar en List string som är tom
         bool isRunning = true;//skapar en boolvariabel som jag sätter till true. så att koden körs.
 
@@ -23,6 +24,8 @@ class ProgramMenu // den här klassen ska innehålle Main
             Console.WriteLine("5. Skriv ut listan");
             Console.WriteLine("6. Sten Sax Påse");
             Console.WriteLine("7. Fixed deposit Account-Calculator");
+            Console.WriteLine("8. Stefans-Calc");
+
 
             string menuChoice = Console.ReadLine();//sparar användarens text
             Console.Clear();
@@ -65,17 +68,23 @@ class ProgramMenu // den här klassen ska innehålle Main
                     break;
 
                 case "7":
-                    Console.WriteLine("Du vill ha hjälp att räkna ut saker?. skriv ja för att går vidare. anykey för att back");
+                    Console.WriteLine("vill du ha hjälp med banken skriv 'Bank'. anykey för att back");
                     string calcAnswer = Console.ReadLine();
-                    if (calcAnswer.ToLower() == "ja")
+                    if (calcAnswer.ToLower() == "bank")
                     {
                         Calculator.CalcBank();
                     }
+
                     else
                     {
                         Console.WriteLine("Går tillbaka till menyn...");
                     }
                     break;
+
+                case "8":
+                    SuperCalculator.Run();
+                    break;
+
 
                 default:
                     Console.WriteLine("Ogiltigt val, försök igen.");
