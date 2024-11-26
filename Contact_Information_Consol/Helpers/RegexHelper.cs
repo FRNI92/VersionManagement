@@ -23,7 +23,7 @@ spara ålder
 skriv ut ålder
 */
 
-public static class Contact
+public static class RegexHelper
 {
     private static Regex nameCheck = new Regex(@"^[a-zA-Z]+$");
 

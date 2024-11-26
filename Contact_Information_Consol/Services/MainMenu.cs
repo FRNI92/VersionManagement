@@ -16,46 +16,20 @@ public static class MainMenu
         while (isRunning)// isRunning får "stämpeln" av true eller false. true i detta fall
         {
             Console.WriteLine("Välj ett alternativ:");
-            Console.WriteLine("1. Lägg till Namn");
-            Console.WriteLine("2. Lägg till ålder");
-            //Console.WriteLine("3. Lägg till telefonnummer");
-            //Console.WriteLine("4 Lägg till adress");
-            Console.WriteLine("5. Skriv ut listan");
-            Console.WriteLine("6. Sten Sax Påse");
-            Console.WriteLine("7. Fixed deposit Account-Calculator");
-            Console.WriteLine("8. Stefans-Calc");
-            //Console.WriteLine("9. Fight The Boss"); gör detta senare
-            Console.WriteLine("10. saker som ska fixas");
+            Console.WriteLine("1. Sten Sax Påse");
+            Console.WriteLine("2. Fixed deposit Account-Calculator");
+            Console.WriteLine("3. Stefans-Calc");
+            Console.WriteLine("4. saker som ska fixas");
+            Console.WriteLine("5. Skapa en lista");
+            //Console.WriteLine("5. Fight The Boss"); gör detta senare
 
 
             string menuChoice = Console.ReadLine();//sparar användarens text
             Console.Clear();
             switch (menuChoice) //städar upp konsollen lite
             {
-                case "1"://jämför det jag sparat från användaren
-                    Console.WriteLine("skriv Namn:");
-                    string input = Console.ReadLine(); //? string får vara null
-                    Contact.AddNameToList(input, userInputList);//öppnar en portal och "speglar" innehållet här med contact
-                    break;
 
-                case "2":
-                    Console.WriteLine("Skriv in din ålder:");
-                    string ageInput = Console.ReadLine();
-                    userInputList.Add(ageInput);
-                    Console.WriteLine($"åldern '{ageInput}' har lagts till i listan.");
-                    break;
-
-                case "5":
-                    Console.WriteLine("Skriver ut listan...");
-                    foreach (string info in userInputList)
-                    {
-                        Console.WriteLine($"-- {info}");
-                    }
-
-                    isRunning = false;
-                    break;
-
-                case "6":
+                case "1":
                     Console.WriteLine("vill du spela Sten sax påse? skriv ja ");
                     string answer = Console.ReadLine();
                     if (answer.ToLower() == "ja")
@@ -68,7 +42,7 @@ public static class MainMenu
                     }
                     break;
 
-                case "7":
+                case "2":
                     Console.WriteLine("vill du ha hjälp med banken skriv 'Bank'. anykey för att back");
                     string calcAnswer = Console.ReadLine();
                     if (calcAnswer.ToLower() == "bank")
@@ -82,11 +56,11 @@ public static class MainMenu
                     }
                     break;
 
-                case "8":
+                case "3":
                     SuperCalculator.Run();
                     break;
 
-                case "10":
+                case "4":
                     Console.WriteLine("Do you want to open the todolist-menu?\n ja\t/\tnej");
                     string toDoAnswer = Console.ReadLine()?.ToLower();
 
@@ -104,6 +78,13 @@ public static class MainMenu
                         Console.WriteLine("inte okej gör om");
                     }
                     break;
+
+                case "5":
+                    {
+                        ContactList.Run();
+                        break;
+                    }
+
 
                 default:
                     Console.WriteLine("Ogiltigt val, försök igen.");

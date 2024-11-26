@@ -1,82 +1,77 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
+﻿
 namespace Contact_Information_Consol.Services
 {
     public static class ContactList
     {
         public static void Run()
         {
-            List<string> userInputList = [];
-            string userChoiceContact;
-            do
+            List<string> userInputList = [];//skapar en List string som är tom
+            bool isRunning = true;
+
+            while (isRunning) 
             {
-                Console.WriteLine("Kontaktuppgifter");
-                Console.WriteLine("1. Lägg till ett namn");
-                Console.WriteLine("2. lägg till ålder");
-                Console.WriteLine("3. lägg till email");
-                Console.WriteLine("4. lägg till telefonnummer");
-                Console.WriteLine("5. Gå tillbaka till huvudmenyn");
+                    Console.Clear();
+                    Console.WriteLine("Kontaktuppgifter");
+                    Console.WriteLine("1. Lägg till ett namn");
+                    Console.WriteLine("2. lägg till ålder");
+                    Console.WriteLine("3. lägg till email");
+                    Console.WriteLine("4. lägg till telefonnummer");
+                    Console.WriteLine("5. Titta på listan");
+                    Console.WriteLine("6. Gå tillbaka till huvudmenyn");
 
+                    string? userChoiceContact = Console.ReadLine();
+                    if (string.IsNullOrWhiteSpace(userChoiceContact))
+                    {
+                        Console.Write("Ogiltigt, försök igen");
+                    }
+     
+                    switch (userChoiceContact)
+                    {
 
-                userChoiceContact = Console.ReadLine();
-                switch (userChoiceContact)
-                {
-                    case "1":
-                        Console.Write("Skriv ditt namn");
-                        string namn = Console.ReadLine();
-                        userInputList.Add(namn);
-                        Console.WriteLine("Namn tillagt\n");
-                        break;
+                        case "1"://jämför det jag sparat från användaren
+                            Console.Write("skriv Namn:");
+                            string input = Console.ReadLine(); //? string får vara null
+                            RegexHelper.AddNameToList(input, userInputList);//öppnar en portal och "speglar" innehållet här med contact
+                            break;
 
-                    case "2":
-                        Console.Write("Skriv din ålder");
-                        string ageInput = Console.ReadLine();
+                        case "2":
+                            Console.Write("Skriv in din ålder:");
+                            string ageInput = Console.ReadLine();
+                            userInputList.Add(ageInput);
+                            Console.WriteLine($"åldern '{ageInput}' har lagts till i listan.");
+                            break;
 
-                        if (int.TryParse(ageInput, out int age))
-                        {
-                            Console.WriteLine($"Din ålder är {age}");
-                        }
-                        else
-                        {
-                            Console.WriteLine("Du måste ange siffor. exempelvis '5' '22' '45' ");
-                        }
-                        break;
+                        case "4":
+                            Console.WriteLine("Lägg till telefonnummer");
+                            string telefonInput = Console.ReadLine();
 
-                    case "3":
-                        Console.WriteLine("Fyll i din email");
-                        string email = Console.ReadLine();
-                        Console.Write($"email tillagd: {email}");
-                        break;
+                            if (int.TryParse(telefonInput, out int telefon))
+                            {
+                                Console.WriteLine("telefonnummer tillagd");
+                            }
+                            else
+                            {
+                                Console.WriteLine("du måste skriva siffror, exempelvis '070 11 88 318");
 
-                    case "4":
-                        Console.WriteLine("Lägg till telefonnummer");
-                        string telefonInput = Console.ReadLine();
+                            }
+                            break;
 
-                        if (int.TryParse(telefonInput, out int telefon))
-                        {
-                            Console.WriteLine("telefonnummer tillagd");
-                        }
-                        else
-                        {
-                            Console.WriteLine("du måste skriva siffror, exempelvis '070 11 88 318");
+                        case "5":
+                            foreach (string info in userInputList)
+                                Console.WriteLine($"-- {info}");
+                            break;
 
-                        }
-                        break;
+                        case "6":
+                            Console.WriteLine("tillbaka till huvudmenyn");
+                            return;
 
-                    case "5":
-                        Console.WriteLine("tillbaka till huvudmenyn");
-                        return;
+                        default:
+                            Console.WriteLine("Ogiltigt val, försök igen.");
+                            break;
+                    }
+                Console.ReadKey();
 
-                    default:
-                        Console.WriteLine("Ogiltigt val, försök igen.");
-                        break;
-                }
-            }
-            while (userChoiceContact != "5");
+            }            
         }
     }
 }
