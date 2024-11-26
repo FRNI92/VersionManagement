@@ -5,19 +5,19 @@ using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Contact_Information_Consol //tillhör samma namespace som resten av projektet
+namespace Contact_Information_Consol.Services //tillhör samma namespace som resten av projektet
 {
     public static class Rock_Paper_Scissors //klassens namne
     {
         public static void Play()// för att vara tillgänglig
         {
 
-                
+
 
             List<string> hansHandSign = [];
             List<string> userHandSign = [];
 
-            
+
 
             //Console.WriteLine("Välkommen till spelet, det finns inte än men är på G");
 
@@ -25,7 +25,7 @@ namespace Contact_Information_Consol //tillhör samma namespace som resten av pr
             //var rock = "1"; gör om detta till en array
             //var scissors = "2";
             //var paper = "3";
-            string[] hands = {  "rock", "scissors", "paper" }; // innehåller fasta värden, ej dynamisk som List
+            string[] hands = { "rock", "scissors", "paper" }; // innehåller fasta värden, ej dynamisk som List
             do
             {
                 Console.WriteLine("write Rock, Paper or Scissors.");
@@ -36,22 +36,22 @@ namespace Contact_Information_Consol //tillhör samma namespace som resten av pr
                 string hansHand = hands[computerHans - 1]; //rock har index 0 så vi drar bort med -1. kanske kan priva att ändra random.next från 0-3 men jag har andra problem
 
                 //jämför användarens "gissining" med datorn
-                if ((userHand == "rock" && computerHans == 2) ||// AND och OR operander
-                (userHand == "scissors" && computerHans == 3) ||
-                (userHand == "paper" && computerHans == 1))
+                if (userHand == "rock" && computerHans == 2 ||// AND och OR operander
+                userHand == "scissors" && computerHans == 3 ||
+                userHand == "paper" && computerHans == 1)
                 {
                     Console.WriteLine("You Won!, Hans lost");
                 }
                 else if
-                ((userHand == "rock" && computerHans == 3) ||
-                    (userHand == "scissors" && computerHans == 1) ||
-                    (userHand == "paper" && computerHans == 2))
+                (userHand == "rock" && computerHans == 3 ||
+                    userHand == "scissors" && computerHans == 1 ||
+                    userHand == "paper" && computerHans == 2)
                 {
                     Console.WriteLine("You lost!, Hans won!");
                 }
-                else if ((userHand == "rock" && computerHans == 1) ||
-                    (userHand == "scissors" && computerHans == 2) ||
-                    (userHand == "paper" && computerHans == 3))
+                else if (userHand == "rock" && computerHans == 1 ||
+                    userHand == "scissors" && computerHans == 2 ||
+                    userHand == "paper" && computerHans == 3)
                 {
                     Console.WriteLine("Its a draw");
                 }
@@ -61,7 +61,7 @@ namespace Contact_Information_Consol //tillhör samma namespace som resten av pr
                 }
                 userHandSign.Add(userHand);//add är en method i List
                 hansHandSign.Add(hansHand);
-                Console.WriteLine($"\tDu valde { userHand }\n\tHans valde: { hansHand }");
+                Console.WriteLine($"\tDu valde {userHand}\n\tHans valde: {hansHand}");
                 Console.WriteLine("orkar du spela mer? (ja/nej)");
                 string answer = Console.ReadLine().ToLower();
                 if (answer == "nej")

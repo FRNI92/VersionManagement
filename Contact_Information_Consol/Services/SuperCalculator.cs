@@ -1,7 +1,7 @@
 ﻿using System;
 using System.ComponentModel.Design;
 using System.Linq;
-namespace Contact_Information_Consol
+namespace Contact_Information_Consol.Services
 {
     class SuperCalculator
     {
@@ -10,16 +10,14 @@ namespace Contact_Information_Consol
         {
             // Ber användaren om antal siffror att mata in
             Console.Write("Hur många siffror vill du mata in? ");
-            if (!int.TryParse(Console.ReadLine(), out int antal) || antal <= 0)//hanterar utfallet direkt så man slipper flera if else. om det inte går hoppas man till brackets
+            if (!int.TryParse(Console.ReadLine(), out int antal) || antal <= 0)/*
+                                                            * hanterar utfallet direkt så man slipper flera if else. om det inte går hoppar man till brackets
+                                                            * <= 0 andra argumentet bryr sig bara om vad första argumentet har fått för svar 
+                                                            */
             {
                 Console.WriteLine("Ogiltig inmatning. Försök igen med ett positivt heltal.");//
                 return;
             }
-
-
-
-
-
             // Array för att lagra användarens siffror
             double[] yourNumbers = new double[antal];// kan vara smidigare med en List
 

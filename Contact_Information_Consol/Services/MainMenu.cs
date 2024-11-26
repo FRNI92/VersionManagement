@@ -1,16 +1,15 @@
-﻿using Contact_Information_Consol;
-using System; //gör att man kan använda consoleWrite/read och datatyper
-using System.Collections.Generic;
-using System.Security.Cryptography.X509Certificates; //gör att vi kan använda List
+﻿using System;
 
-/*lägger till val 2 i menyn. lägger till case 2 
- lägg till slash n och slash t*/
+namespace Contact_Information_Consol.Services;
 
-class ProgramMenu // den här klassen ska innehålle Main
+public static class MainMenu
 {
-    static void Main(string[] args)
+    public static void Run()
     {
-        // den ligger här för att jag ska slippa gå igenom alla val
+
+        //Console.WriteLine("Startar ContactList..."); // testar contaclist direkt genom contactList.Run();
+        //ContactList.Run();
+
         List<string> userInputList = [];//skapar en List string som är tom
         bool isRunning = true;//skapar en boolvariabel som jag sätter till true. så att koden körs.
 
@@ -25,6 +24,8 @@ class ProgramMenu // den här klassen ska innehålle Main
             Console.WriteLine("6. Sten Sax Påse");
             Console.WriteLine("7. Fixed deposit Account-Calculator");
             Console.WriteLine("8. Stefans-Calc");
+            //Console.WriteLine("9. Fight The Boss"); gör detta senare
+            Console.WriteLine("10. saker som ska fixas");
 
 
             string menuChoice = Console.ReadLine();//sparar användarens text
@@ -33,7 +34,7 @@ class ProgramMenu // den här klassen ska innehålle Main
             {
                 case "1"://jämför det jag sparat från användaren
                     Console.WriteLine("skriv Namn:");
-                    string input = Console.ReadLine();
+                    string input = Console.ReadLine(); //? string får vara null
                     Contact.AddNameToList(input, userInputList);//öppnar en portal och "speglar" innehållet här med contact
                     break;
 
@@ -42,7 +43,7 @@ class ProgramMenu // den här klassen ska innehålle Main
                     string ageInput = Console.ReadLine();
                     userInputList.Add(ageInput);
                     Console.WriteLine($"åldern '{ageInput}' har lagts till i listan.");
-                   break;
+                    break;
 
                 case "5":
                     Console.WriteLine("Skriver ut listan...");
@@ -53,7 +54,7 @@ class ProgramMenu // den här klassen ska innehålle Main
 
                     isRunning = false;
                     break;
-                
+
                 case "6":
                     Console.WriteLine("vill du spela Sten sax påse? skriv ja ");
                     string answer = Console.ReadLine();
@@ -85,14 +86,33 @@ class ProgramMenu // den här klassen ska innehålle Main
                     SuperCalculator.Run();
                     break;
 
+                case "10":
+                    Console.WriteLine("Do you want to open the todolist-menu?\n ja\t/\tnej");
+                    string toDoAnswer = Console.ReadLine()?.ToLower();
+
+                    if (toDoAnswer == "ja")
+                    {
+                        Console.WriteLine("shut up");
+                        //ToDoList.Run();
+                    }
+                    else if (toDoAnswer == "nej")
+                    {
+                        Console.WriteLine("do nothing");
+                    }
+                    else
+                    {
+                        Console.WriteLine("inte okej gör om");
+                    }
+                    break;
 
                 default:
                     Console.WriteLine("Ogiltigt val, försök igen.");
                     break;
 
             }
+
         }
     }
 }
 
-                    
+
