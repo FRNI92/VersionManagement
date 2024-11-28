@@ -6,15 +6,16 @@ public static class MainMenu
 {
     public static void Run()
     {
-
+        
         //Console.WriteLine("Startar ContactList..."); // testar contaclist direkt genom contactList.Run();
         //ContactList.Run();
 
         List<string> userInputList = [];//skapar en List string som är tom
         bool isRunning = true;//skapar en boolvariabel som jag sätter till true. så att koden körs.
-
+        
         while (isRunning)// isRunning får "stämpeln" av true eller false. true i detta fall
         {
+            Console.Clear();
             Console.WriteLine("Välj ett alternativ:");
             Console.WriteLine("1. Sten Sax Påse");
             Console.WriteLine("2. Fixed deposit Account-Calculator");
@@ -31,10 +32,14 @@ public static class MainMenu
 
                 case "1":
                     Console.WriteLine("vill du spela Sten sax påse? skriv ja ");
-                    string answer = Console.ReadLine();
-                    if (answer.ToLower() == "ja")
+                    string? answer = Console.ReadLine();
+                    if (!string.IsNullOrWhiteSpace(answer)) 
                     {
+                        if (answer.ToLower() == "ja")
+                        {
                         Rock_Paper_Scissors.Play();//anropar filen med spelet
+
+                        }
                     }
                     else
                     {
@@ -76,6 +81,7 @@ public static class MainMenu
                     else
                     {
                         Console.WriteLine("inte okej gör om");
+
                     }
                     break;
 

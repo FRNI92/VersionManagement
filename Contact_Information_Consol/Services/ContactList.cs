@@ -68,6 +68,20 @@ namespace Contact_Information_Consol.Services
                         }
                         break;
                             
+                        case "3":
+                        Console.Write("Skriv in din email");
+                        string? emailAdress = Console.ReadLine();
+                        if (string.IsNullOrWhiteSpace(emailAdress))
+                        {
+                            Console.WriteLine("Du måste skriva in något här faktist");
+                        }
+                        else
+                        {
+                            userInputList.Add(emailAdress);
+                            Console.WriteLine($"Din email: {emailAdress} är tillagd");
+                        }
+
+                        break;
 
 
                         case "4":
@@ -76,8 +90,8 @@ namespace Contact_Information_Consol.Services
 
                             if (long.TryParse(telefonInput, out _))
                             {
-                            Console.WriteLine("telefonnummer tillagd");
-                            userInputList.Add($"Telephonenumber:{telefonInput}");
+                            Console.WriteLine($"telefonnummer {telefonInput} tillagd");
+                            userInputList.Add($"Telephonenumber: {telefonInput}");
                             }
                             else
                             {
