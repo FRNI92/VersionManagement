@@ -71,8 +71,8 @@ public static class MainMenu
 
                     if (toDoAnswer == "ja")
                     {
-                        Console.WriteLine("shut up");
-                        //ToDoList.Run();
+                       
+                        TodoList.Run();
                     }
                     else if (toDoAnswer == "nej")
                     {
@@ -83,6 +83,7 @@ public static class MainMenu
                         Console.WriteLine("inte okej gör om");
 
                     }
+                    Console.ReadKey();
                     break;
 
                 case "5":
