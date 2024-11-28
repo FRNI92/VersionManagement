@@ -23,40 +23,70 @@ namespace Contact_Information_Consol.Services
                     if (string.IsNullOrWhiteSpace(userChoiceContact))
                     {
                         Console.Write("Ogiltigt, försök igen");
+                        Console.ReadKey();
+                        continue;
                     }
      
                     switch (userChoiceContact)
                     {
 
                         case "1"://jämför det jag sparat från användaren
-                            Console.Write("skriv Namn:");
-                            string input = Console.ReadLine(); //? string får vara null
-                            RegexHelper.AddNameToList(input, userInputList);//öppnar en portal och "speglar" innehållet här med contact
-                            break;
+                        Console.Write("skriv Namn:");
+                            string? input = Console.ReadLine(); //? string får vara null
+                        if (string.IsNullOrWhiteSpace(input)) //anropar class string och använder inbyggd metod isnull för att kolla string-input
+                        {
+                            Console.Write("du får inte skicka in tomma värden");
 
+                        }
+                        else
+                        {
+                            RegexHelper.AddNameToList(input, userInputList);//öppnar en portal och "speglar" innehållet här med contact
+                        }
+                            break; //stoppar exekveringen av switchen
+
+                        //med breakpoints kan man köra igång utan att behöve gå igenom hela programmet. smidigare än att lägga ContactList.Run() på Main
                         case "2":
                             Console.Write("Skriv in din ålder:");
-                            string ageInput = Console.ReadLine();
-                            userInputList.Add(ageInput);
-                            Console.WriteLine($"åldern '{ageInput}' har lagts till i listan.");
+
+                            string? ageInput = Console.ReadLine();
+                        if (string.IsNullOrWhiteSpace(ageInput)) //här vill jag också kolla om det är mer än 0
+                        {
+                            Console.WriteLine("Det får inte vara tomt");//skrivs om is null är true annar skippar vi
                             break;
+                        }
+                        if (int.TryParse(ageInput, out int yearsInNumber) && yearsInNumber > 0) // osäker på om if bör användas såhär men det funkar
+                        {
+                            userInputList.Add($"Age:{yearsInNumber}");
+                            Console.WriteLine($"åldern '{yearsInNumber}' har lagts till i listan.");//skrirs om den lyckas konvertera och det som konverterats är mer än 0
+                            //Console.ReadKey();
+                            break;
+                        }
+     
+                        else
+                        {
+                            Console.Write("Det måste vara en siffra och den måste vara högre än 0");
+                        }
+                        break;
+                            
+
 
                         case "4":
                             Console.WriteLine("Lägg till telefonnummer");
-                            string telefonInput = Console.ReadLine();
+                            string? telefonInput = Console.ReadLine();
 
-                            if (int.TryParse(telefonInput, out int telefon))
+                            if (long.TryParse(telefonInput, out _))
                             {
-                                Console.WriteLine("telefonnummer tillagd");
+                            Console.WriteLine("telefonnummer tillagd");
+                            userInputList.Add($"Telephonenumber:{telefonInput}");
                             }
                             else
                             {
-                                Console.WriteLine("du måste skriva siffror, exempelvis '070 11 88 318");
-
+                            Console.WriteLine("du måste skriva siffror, exempelvis 070 11 88 318");
                             }
                             break;
 
                         case "5":
+                            Console.WriteLine("Här har du listan");
                             foreach (string info in userInputList)
                                 Console.WriteLine($"-- {info}");
                             break;
