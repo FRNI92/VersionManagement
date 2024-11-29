@@ -31,6 +31,7 @@ public static class TodoList
                     MarkAsCompleted();
                     break;
                 case "4":
+                    Console.WriteLine("Press anykey to end program");
                     isRunning = false;// stoppar whileloopen. vakten säger att vi inte får åka ett varv till
                     break;
                 default:
@@ -97,7 +98,7 @@ public static class TodoList
             return;//hoppar ur blocket och kör om från början. sitter en whileloop(isRunning som är true) där uppe. tills man klickar case 4
         }
 
-        Console.Write("uppgifter i listan");
+        Console.WriteLine("uppgifter i listan");
         for (int i = 0; i < todos.Count; i++)// reglerna för att blocket ska köras. i++ sker efter blocket.
         {
             string status = todos[i].IsCompleted ? "done" : "notevenclosebeingdone"; //den kollar om alla items i listan är false eller inte. alla är false från början
