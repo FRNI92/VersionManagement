@@ -43,20 +43,31 @@ public static class TodoList
 
     private static void AddTask()
     {
-        Console.WriteLine("What task would you like to add");
+        bool addMoreToList = true;
+
+        while (addMoreToList)
+        {
+        
+        Console.WriteLine("What task would you like to add? skriv avsluta för att gå till menyn");
         string? taskDescription = Console.ReadLine();
 
-        if (string.IsNullOrEmpty(taskDescription))//hanterar null
-        {
-            Console.WriteLine("fyll i något tack");
+            if (string.IsNullOrWhiteSpace(taskDescription))//hanterar null
+            {
+                Console.WriteLine("fyll i något tack");
+            }
+            else if (taskDescription.ToLower() == "avsluta")
+            {
+                addMoreToList = false;
+            }
+            else
+            {
+                todos.Add(new Todo(taskDescription));// det i parantesen sker först, object skickas som par
+                Console.Clear();
+                Console.WriteLine($"The task '{taskDescription}' has been added");
+            }
+            //Console.ReadKey();
 
         }
-        else
-        {
-            todos.Add(new Todo(taskDescription));// det i parantesen sker först, object skickas som par
-            Console.WriteLine($"The task '{taskDescription}' has been added");
-        }
-        Console.ReadKey();
     }
     private static void ShowTasks()// ska lägga in logicen här
     {
