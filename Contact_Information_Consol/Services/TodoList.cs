@@ -53,7 +53,7 @@ public static class TodoList
         }
         else
         {
-            todos.Add(new Todo(taskDescription));
+            todos.Add(new Todo(taskDescription));// det i parantesen sker först, object skickas som par
             Console.WriteLine($"The task '{taskDescription}' has been added");
         }
         Console.ReadKey();
