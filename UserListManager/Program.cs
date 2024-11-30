@@ -36,19 +36,25 @@ class Program
                     Console.WriteLine("Submit you name");
                     var nameInput = Console.ReadLine();
                     Console.WriteLine("Submit you email");
-                    var emailInput = Console.ReadLine();
+                    var emailInput = Console.ReadLine();//hoppar över till konstruktorn och set respektive, samt får timestamp
                     userTemplates.Add(new UserTemplate (nameInput, emailInput));//är samma som userTemplates.Add(new UserListManager.Models.UserTemplate(nameInput, emailInput));
-                    fileSavingService.SaveToFile(userTemplates);
+                    fileSavingService.SaveToFile(userTemplates);//sparar det med public void saveToFie
                     Console.WriteLine("The user has been added");
                     break;
 
+                    /*vi skriver ut UserList och sedan loopar vi med for tills att vi gått igenom alla fack i boxen
+                     * .Count är en inbyggd egenskap i List som kan returnera antalet fack/element
+                     så länge i är färre än Count så fortsätter vi loopa. index börjar på 0 men vi räknar från 1
+                    har jag 3 object[0,1,2] så är Count 3. varv 1 så är i 0, varv 2 är i 1, varv 3 är i 2. därför kommer den inte 
+                    loopa på varv 4 för då är count inte mindre än i(3)*/
                 case "2":
                     Console.WriteLine("UserList:");
                     for (int i = 0; i < userTemplates.Count; i++)
                     {
-                        var user = userTemplates[i];
+                        var user = userTemplates[i];//här så använder vi i för att srkiva ut dem i indexeringsording
                         Console.WriteLine($"{i + 1}. Name: {user.Name}, Email: {user.Email}, Created: {user.Created}");
-                    }
+                    }//men för att inte börja på 0 så kör man i+1
+                    //verkar kunna bli problem med både for och foreach om strukturen på facken i boxen ändras
                     break;
                 case "3":
                     return;
